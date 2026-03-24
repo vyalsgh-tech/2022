@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모의고사 시간표</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-panel">
+            <h1 class="table-title">모의고사 시간표(2022)</h1>
+            
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>교시</th>
+                        <th>시간</th>
+                        <th>과목</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="center-text highlight-text">1교시</td>
+                        <td>08:10(20) ~ 09:40</td>
+                        <td>국어(80분)</td>
+                    </tr>
+                    <tr>
+                        <td class="center-text highlight-text">2교시</td>
+                        <td>09:50(10:00) ~ 11:40</td>
+                        <td>수학(100분)</td>
+                    </tr>
+                    <tr>
+                        <td class="center-text highlight-text">3교시</td>
+                        <td>12:40(50) ~ 14:00</td>
+                        <td>영어(70분)</td>
+                    </tr>
+                    <tr>
+                        <td class="center-text highlight-text">4교시</td>
+                        <td>14:10(20) ~ 16:20</td>
+                        <td>한국사/통사/통과(120분)</td>
+                    </tr>
+                    <tr class="sub-row">
+                        <td></td>
+                        <td>- 14:20 ~ 14:50</td>
+                        <td>- 한국사(30분)</td>
+                    </tr>
+                    <tr class="sub-row">
+                        <td></td>
+                        <td>- 14:55 ~ 15:35</td>
+                        <td>- 통합사회(40분)</td>
+                    </tr>
+                    <tr class="sub-row">
+                        <td></td>
+                        <td>- 15:40 ~ 16:20</td>
+                        <td>- 통합과학(40분)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="right-panel">
+            <div id="clock" class="clock">00 : 00 : 00</div>
+            
+            <div class="school-code">학교코드 : 11505</div>
+            
+            <div class="attendance-info">
+                <div class="info-row">
+                    <div class="inline-group">
+                        <input type="text" id="grade-input" class="number-box mini-box">
+                        <span class="unit-text">학년</span>
+                        <input type="text" id="class-input" class="number-box mini-box">
+                        <span class="unit-text">반</span>
+                    </div>
+                </div>
+                
+                <div class="info-row">
+                    <span class="info-label">• 재적</span>
+                    <input type="number" id="total-input" class="number-box" value="20">
+                </div>
+                <div class="info-row">
+                    <span class="info-label">• 응시</span>
+                    <input type="number" id="present-input" class="number-box" value="20">
+                </div>
+                <div class="info-row absent-row">
+                    <span class="info-label">• 결시</span>
+                    <input type="text" id="absent-input" class="number-box absent-box">
+                </div>
+                <div class="info-row absent-row">
+                    <span class="info-label">• 결번</span>
+                    <input type="text" id="missing-input" class="number-box absent-box">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="control-panel">
+        <button id="btn-font-up">글자크게</button>
+        <button id="btn-font-down">글자작게</button>
+        <button id="btn-space-up">간격크게</button>
+        <button id="btn-space-down">간격작게</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
