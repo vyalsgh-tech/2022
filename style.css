@@ -37,39 +37,37 @@ body {
 }
 
 .left-panel { 
-    flex: 6 1 0; 
+    flex: 5.5 1 0; 
     min-width: 0; 
     display: flex;
     flex-direction: column; 
 }
 
-/* 수정: 클릭형 드롭다운 타이틀 스타일 설정 */
 .table-title-select {
-    background: transparent;
+    background-color: var(--bg-color); 
     border: none;
     color: var(--text-color);
     font-size: calc(clamp(2rem, 3vw, 3.5rem) * var(--font-scale));
     font-weight: 800;
     text-align: center;
-    text-align-last: center; /* 텍스트 중앙 정렬 유지 */
+    text-align-last: center; 
     margin: 0 auto calc(2vw * var(--space-scale)) auto;
+    padding: 0.5vw 2vw;
     letter-spacing: 0.1vw;
-    white-space: nowrap;
     display: block;
-    cursor: pointer; /* 마우스 오버 시 손가락 모양 */
+    cursor: pointer; 
     outline: none;
     font-family: inherit;
-    appearance: none; /* 브라우저 기본 화살표 숨김 */
+    appearance: none; 
     -webkit-appearance: none;
     -moz-appearance: none;
     transition: color 0.3s ease;
 }
 
 .table-title-select:hover {
-    color: var(--accent-yellow); /* 클릭 전 마우스 올리면 노란색으로 반응 */
+    color: var(--accent-yellow); 
 }
 
-/* 드롭다운을 펼쳤을 때 리스트 스타일 */
 .table-title-select option {
     background-color: var(--header-bg);
     color: #ffffff;
@@ -84,7 +82,12 @@ body {
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 15px 40px rgba(0,0,0,0.5); 
+    table-layout: fixed; 
 }
+
+.schedule-table th:nth-child(1) { width: 14%; }
+.schedule-table th:nth-child(2) { width: 42%; }
+.schedule-table th:nth-child(3) { width: 44%; }
 
 .schedule-table th, .schedule-table td {
     white-space: nowrap; 
@@ -93,17 +96,17 @@ body {
 .schedule-table th {
     background-color: var(--header-bg);
     color: #ffffff;
-    font-size: calc(clamp(1.6rem, 2.2vw, 2.8rem) * var(--font-scale)); 
+    font-size: calc(clamp(1.4rem, 2vw, 2.6rem) * var(--font-scale)); 
     font-weight: 800; 
-    padding: calc(1.8vw * var(--space-scale)) 2vw; 
+    padding: calc(1.8vw * var(--space-scale)) 1vw; 
     text-align: center;
     border-bottom: 4px solid var(--header-border); 
 }
 
 .schedule-table td {
-    font-size: calc(clamp(1.4rem, 2vw, 2.4rem) * var(--font-scale)); 
+    font-size: calc(clamp(1.3rem, 1.8vw, 2.2rem) * var(--font-scale)); 
     font-weight: 600; 
-    padding: calc(1.6vw * var(--space-scale)) 1.5vw; 
+    padding: calc(1.6vw * var(--space-scale)) 1vw; 
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -123,12 +126,75 @@ body {
 }
 .sub-row:last-child td { border-bottom: 1px solid var(--border-color); }
 
+.subject-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    width: 100%;
+    box-sizing: border-box; 
+}
+
+/* 수정: 과목칸 폰트 속성 분리 및 내부 여백 최소화 */
+.subject-input {
+    flex: 1 1 0%; 
+    min-width: 0; 
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.05); 
+    border: 1px solid transparent; 
+    border-bottom: 1px solid var(--border-color); 
+    color: var(--text-color);
+    font-size: 100%; 
+    font-family: inherit;
+    font-weight: 600;
+    padding: 0.5vw; 
+    border-radius: 6px;
+    outline: none;
+    transition: all 0.2s ease; /* 줄어들 때 부드럽게 애니메이션 */
+}
+
+/* 수정: 코드 박스 넓이 소폭 증가 및 내부 여백(패딩) 제거 */
+.subject-code-input {
+    flex: 0 0 auto; 
+    width: clamp(45px, 5vw, 65px); 
+    box-sizing: border-box;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.05); 
+    border: 1px solid transparent; 
+    border-bottom: 1px solid var(--border-color); 
+    color: var(--text-color);
+    font-size: 100%; 
+    font-family: inherit;
+    font-weight: 600;
+    padding: 0.5vw 0; /* 좌우 여백을 0으로 만들어 글자 잘림 방지 */
+    letter-spacing: -1px; /* 글자가 밀집되게 자간 축소 */
+    border-radius: 6px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.subject-input:focus, .subject-code-input:focus {
+    background-color: rgba(253, 224, 71, 0.1);
+    border: 1px solid var(--accent-yellow);
+    box-shadow: 0 0 10px rgba(253, 224, 71, 0.2);
+}
+
+.subject-input::placeholder, .subject-code-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 400;
+}
+
 .right-panel {
-    flex: 4 1 0; 
+    flex: 4.5 1 0; 
     min-width: 0; 
     display: flex;
     flex-direction: column;
     gap: calc(2vw * var(--space-scale));
+}
+
+.clock-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vw;
 }
 
 .clock {
@@ -139,6 +205,14 @@ body {
     letter-spacing: 0.3vw;
     text-shadow: 0 0 20px rgba(253, 224, 71, 0.3); 
     white-space: nowrap;
+}
+
+.clock-notice {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: calc(clamp(1rem, 1.4vw, 1.8rem) * var(--font-scale));
+    text-align: center;
+    font-weight: 500;
+    word-break: keep-all;
 }
 
 .school-code {

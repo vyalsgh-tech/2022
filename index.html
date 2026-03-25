@@ -14,6 +14,7 @@
             <select id="schedule-selector" class="table-title-select">
                 <option value="2022">모의고사 시간표(2022) ▼</option>
                 <option value="2015">모의고사 시간표(2015) ▼</option>
+                <option value="regular">정기시험 감독표 ▼</option>
             </select>
             
             <table class="schedule-table">
@@ -21,7 +22,7 @@
                     <tr>
                         <th>교시</th>
                         <th>시간</th>
-                        <th>과목</th>
+                        <th id="subject-header">과목</th>
                     </tr>
                 </thead>
                 
@@ -106,13 +107,60 @@
                     </tr>
                 </tbody>
 
+                <tbody id="schedule-regular" style="display: none;">
+                    <tr>
+                        <td class="center-text highlight-text">1교시</td>
+                        <td>08:00 ~ 08:40</td>
+                        <td>
+                            <div class="subject-input-group">
+                                <input type="text" class="subject-input" placeholder="과목 입력(예: 자습)">
+                                <input type="text" class="subject-code-input" placeholder="코드" maxlength="2">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="center-text highlight-text">2교시</td>
+                        <td>08:55(09:00) ~ 09:50</td>
+                        <td>
+                            <div class="subject-input-group">
+                                <input type="text" class="subject-input" placeholder="과목 입력">
+                                <input type="text" class="subject-code-input" placeholder="코드" maxlength="2">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="center-text highlight-text">3교시</td>
+                        <td>10:10 ~ 10:30</td>
+                        <td>
+                            <div class="subject-input-group">
+                                <input type="text" class="subject-input" placeholder="과목 입력">
+                                <input type="text" class="subject-code-input" placeholder="코드" maxlength="2">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="center-text highlight-text">4교시</td>
+                        <td>10:45(10:50) ~ 11:40</td>
+                        <td>
+                            <div class="subject-input-group">
+                                <input type="text" class="subject-input" placeholder="과목 입력">
+                                <input type="text" class="subject-code-input" placeholder="코드" maxlength="2">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+
             </table>
         </div>
 
         <div class="right-panel">
-            <div id="clock" class="clock">00 : 00 : 00</div>
             
-            <div class="school-code">학교코드 : 11505</div>
+            <div class="clock-container">
+                <div id="clock" class="clock">00 : 00 : 00</div>
+                <div class="clock-notice">(실제 타종이 기준이며, 표시 시각은 단순 참고용임.)</div>
+            </div>
+            
+            <div id="school-code" class="school-code">학교코드 : 11505</div>
             
             <div class="attendance-info">
                 <div class="info-row">

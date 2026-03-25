@@ -62,33 +62,67 @@ document.getElementById('btn-space-down').addEventListener('click', () => {
 });
 
 // ==========================================
-// 3. 시간표 버전 변경 및 5교시 토글 로직 추가
+// 3. 시간표 버전 변경 및 요소 제어 로직
 // ==========================================
 const scheduleSelector = document.getElementById('schedule-selector');
 const schedule2022 = document.getElementById('schedule-2022');
 const schedule2015 = document.getElementById('schedule-2015');
+const scheduleRegular = document.getElementById('schedule-regular'); 
 const btnToggle5th = document.getElementById('btn-toggle-5th');
 const period5Row = document.getElementById('period-5-row');
+const schoolCode = document.getElementById('school-code'); 
+const subjectHeader = document.getElementById('subject-header'); 
 
-// 타이틀(드롭다운) 변경 이벤트
 scheduleSelector.addEventListener('change', (e) => {
+    schedule2022.style.display = 'none';
+    schedule2015.style.display = 'none';
+    scheduleRegular.style.display = 'none';
+    btnToggle5th.style.display = 'none';
+
     if (e.target.value === '2022') {
-        schedule2022.style.display = ''; // 2022년도 표시
-        schedule2015.style.display = 'none'; // 2015년도 숨김
-        btnToggle5th.style.display = 'none'; // 5교시 버튼 숨김
+        schedule2022.style.display = '';
+        schoolCode.style.display = 'block'; 
+        subjectHeader.textContent = '과목'; 
     } else if (e.target.value === '2015') {
-        schedule2022.style.display = 'none'; // 2022년도 숨김
-        schedule2015.style.display = ''; // 2015년도 표시
-        btnToggle5th.style.display = 'inline-block'; // 5교시 버튼 표시
+        schedule2015.style.display = '';
+        btnToggle5th.style.display = 'inline-block'; 
+        schoolCode.style.display = 'block'; 
+        subjectHeader.textContent = '과목'; 
+    } else if (e.target.value === 'regular') {
+        scheduleRegular.style.display = '';
+        schoolCode.style.display = 'none'; 
+        subjectHeader.textContent = '과목(코드)'; 
     }
 });
 
-// 5교시 추가/삭제 버튼 이벤트
 btnToggle5th.addEventListener('click', () => {
-    // 5교시가 숨겨져 있다면 보이게, 보인다면 숨기게 전환
     if (period5Row.style.display === 'none') {
         period5Row.style.display = '';
     } else {
         period5Row.style.display = 'none';
     }
+});
+
+// ==========================================
+// 4. 과목명 긴 글자 입력 시 폰트 자동 압축 로직
+// ==========================================
+const subjectInputs = document.querySelectorAll('.subject-input');
+
+subjectInputs.forEach(input => {
+    input.addEventListener('input', function() {
+        const len = this.value.length;
+        
+        // 수정: 8글자 초과(9글자 이상) 시 크기와 자간을 줄입니다.
+        if (len >= 12) {
+            this.style.fontSize = '65%';
+            this.style.letterSpacing = '-1.5px';
+        } else if (len > 8) { // 8글자를 초과하는 경우
+            this.style.fontSize = '85%';
+            this.style.letterSpacing = '-0.5px';
+        } else {
+            // 8글자 이하일 때는 기본 크기 유지
+            this.style.fontSize = '100%';
+            this.style.letterSpacing = 'normal';
+        }
+    });
 });
