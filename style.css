@@ -30,14 +30,12 @@ body {
     display: flex;
     flex-wrap: nowrap; 
     gap: 3vw; 
-    /* 수정: 양쪽 패널의 전체 높이를 강제로 일치시킴 */
     align-items: stretch; 
     justify-content: center;
     width: 98vw; 
     max-width: 1800px;
 }
 
-/* --- 왼쪽 시간표 영역 --- */
 .left-panel { 
     flex: 6 1 0; 
     min-width: 0; 
@@ -45,19 +43,41 @@ body {
     flex-direction: column; 
 }
 
-.table-title {
+/* 수정: 클릭형 드롭다운 타이틀 스타일 설정 */
+.table-title-select {
+    background: transparent;
+    border: none;
     color: var(--text-color);
     font-size: calc(clamp(2rem, 3vw, 3.5rem) * var(--font-scale));
     font-weight: 800;
     text-align: center;
-    margin: 0 0 calc(2vw * var(--space-scale)) 0;
+    text-align-last: center; /* 텍스트 중앙 정렬 유지 */
+    margin: 0 auto calc(2vw * var(--space-scale)) auto;
     letter-spacing: 0.1vw;
     white-space: nowrap;
+    display: block;
+    cursor: pointer; /* 마우스 오버 시 손가락 모양 */
+    outline: none;
+    font-family: inherit;
+    appearance: none; /* 브라우저 기본 화살표 숨김 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: color 0.3s ease;
+}
+
+.table-title-select:hover {
+    color: var(--accent-yellow); /* 클릭 전 마우스 올리면 노란색으로 반응 */
+}
+
+/* 드롭다운을 펼쳤을 때 리스트 스타일 */
+.table-title-select option {
+    background-color: var(--header-bg);
+    color: #ffffff;
+    font-size: clamp(1.2rem, 1.8vw, 1.8rem);
 }
 
 .schedule-table {
     width: 100%;
-    /* 수정: 테이블이 부모 패널의 높이를 100% 채우도록 하여 하단선을 맞춤 */
     height: 100%; 
     border-collapse: collapse;
     background-color: var(--table-bg);
@@ -83,7 +103,6 @@ body {
 .schedule-table td {
     font-size: calc(clamp(1.4rem, 2vw, 2.4rem) * var(--font-scale)); 
     font-weight: 600; 
-    /* 수정: 셀 내부 여백을 늘려 자연스럽게 높이를 확장 */
     padding: calc(1.6vw * var(--space-scale)) 1.5vw; 
     border-bottom: 1px solid var(--border-color);
 }
@@ -104,7 +123,6 @@ body {
 }
 .sub-row:last-child td { border-bottom: 1px solid var(--border-color); }
 
-/* --- 오른쪽 시계 및 현황 영역 --- */
 .right-panel {
     flex: 4 1 0; 
     min-width: 0; 
@@ -137,7 +155,6 @@ body {
 .attendance-info {
     display: flex;
     flex-direction: column;
-    /* 수정: 왼쪽 테이블 높이에 맞춰 내부 항목들을 균등하게 배치 */
     justify-content: space-around; 
     flex-grow: 1; 
     gap: calc(1vw * var(--space-scale));
